@@ -4,4 +4,5 @@ var mainCtrl = function($scope) {
   {'name':'tanaka', 'score':38.22},
   {'name':'yamada', 'score':11.11}
   ];
+  $scope.today = new Date();
 }
