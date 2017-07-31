@@ -9,11 +9,24 @@
   <body>
     <h1>AngularJSの練習</h1>
     <div ng-controller='mainCtrl'>
-      <p>{{120 * 25 | number}} users.</p>
-      <p>{{120 * 25 | currency:'¥'}} users.</p>
-      <p>{{today | date:'yyyy-MM-dd'}}</p>
       <ul>
-        <li ng-repeat='user in users'>
+        <li ng-repeat='user in users | limitTo:5'>
+          {{user.name | uppercase}} {{user.score | number:4}}
+        </li>
+      </ul>
+      <ul>
+        <li ng-repeat='user in users | orderBy:"score"'>
+          {{user.name | uppercase}} {{user.score | number:4}}
+        </li>
+      </ul>
+      <ul>
+        <li ng-repeat='user in users | orderBy:"-score" | limitTo:3'>
+          {{user.name | uppercase}} {{user.score | number:4}}
+        </li>
+      </ul>
+      <p><input type='text' ng-model='query.name'></input></p>
+      <ul>
+        <li ng-repeat='user in users | filter:query'>
           {{user.name | uppercase}} {{user.score | number:4}}
         </li>
       </ul>
