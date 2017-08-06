@@ -11,25 +11,20 @@
     <div ng-controller='mainCtrl'>
       <form novalidate name='myForm' ng-submit='addUser()'>
         <p>
-          Name:
-          <input type='text' name='name' ng-model='user.name' required ng-minlength='5' ng-maxlength='8'>
-          <span ng-show='myForm.name.$error.required'>Required!</span>
-          <span ng-show='myForm.name.$error.minlength'>Too short!</span>
-          <span ng-show='myForm.name.$error.maxlength'>Too long!</span>
+          18+:
+          <input type='checkbox' ng-model='user.adult' ng-true-value='adult' ng-false-value='child'>
         </p>
         <p>
-          Score:
-          <input type='number' name='score' ng-model='user.score'>
+          Phone:
+          <input type='radio' ng-model='user.phone' value='iPhone'>iPhone
+          <input type='radio' ng-model='user.phone' value='Android'>Android
         </p>
         <p>
-          Email:
-          <input type='email' name='email' ng-model='user.email'>
-          <span ng-show='myForm.email.$error.email'>Not valid email!</span>
-        </p>
-        <p>
-          Web:
-          <input type='url' name='url' ng-model='user.url'>
-          <span ng-show='myForm.url.$error.url'>Not valid url!</span>
+          Memo:
+          <textarea name='memo' ng-model='user.memo' ng-maxlength='140'>
+          </textarea>
+          <span ng-hide='myForm.memo.$error.maxlength'>{{140 - user.memo.length}}</span>
+          <span ng-show='myForm.memo.$error.maxlength'>Too long!</span>
         </p>
         <p>
           <input type='submit' value='add'>
